@@ -5,8 +5,11 @@ Não to com muito tempo pra descrever direitinho agora.
 ## Design
 
 📁 `app:` é onde fica toda a lógica da aplicação
+
 -- 📁 `Controllers` responsável por receber uma **requisição** e retornar uma **resposta**.
+
 -- 📁 `Facades` responsável por abstrair os pacotes e diminuir o acoplamento e dependência.
+
 -- 📁 `Middlewares` camada responsável por colocar regras na **requisição**
 ---- 📄 `AuthenticationMiddleware` verifica se existem token e se ele é válido.
 -- 📁`Repository` responsável por fazer a ligação entre a **aplicação** e o **banco de dados**.
