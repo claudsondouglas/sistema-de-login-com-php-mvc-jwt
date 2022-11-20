@@ -1,0 +1,32 @@
+services:
+    web:
+        image: nginx:latest
+        restart: always
+        ports:
+            - "80:80"
+        volumes:
+            - ./www:/var/www
+            - ./site.conf:/etc/nginx/conf.d/site.conf
+        depends_on:
+            - php
+            - mysql
+        volumes_from:
+            - php
+    php:
+        image: php:8.1-fpm
+        volumes:
+            - ./www:/var/www
+        build:
+            dockerfile: ./Dockerfile
+    mysql:
+        image: mysql:latest
+        restart: always
+        environment:
+            - MYSQL_DATABASE=poticms
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_USER=poticms
+            - MYSQL_PASSWORD=password
+        ports:
+            - "8989:3306"
+        volumes:
+            - "./mysql:/var/lib/mysql"
